@@ -1,7 +1,5 @@
 # Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
 
 trigger:
 - master
@@ -48,10 +46,13 @@ steps:
  
 
   
-- task: AzureFunctionApp@1
-  displayName: Azure Function App deploy
+- task: AzureWebApp@1
   inputs:
-    azureSubscription: $(serviceConnectionToAzure)
-    appType: functionApp
-    appName: $(appName)
-    package: $(build.artifactstagingdirectory)/$(appName)
+    azureSubscription: 'Appeng POC yg'
+    appType: 'webAppLinux'
+    appName: 'testyg1'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    runtimeStack: 'JAVA|8-jre8'
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
